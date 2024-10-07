@@ -18,7 +18,7 @@ public class ZooManagement {
         zooname.close();
 
         Animal lion=new Animal("Lions","Simba",20,true);
-        Zoo myZoo=new Zoo("Singapore Zoo","Singapore");
+        Zoo myZoo=new Zoo("Singapore Zoo","Singapore",25);
         myZoo.displayZoo();
         System.out.println(myZoo);
         System.out.println(myZoo.toString());
@@ -29,19 +29,6 @@ public class ZooManagement {
         toString() affiche cette résultat Zoo@7cd84586 cela signifie package.class avec le hashCode
         le compilateur dans ce cas fait l'appel implicite de cette méthode
          */
-        Animal tigre = new Animal("Felidae", "Tigre", 7, true);
-        Animal elephant = new Animal("Elephantidae", "Éléphant", 15, true);
-        myZoo.addAnimal(lion);
-        myZoo.addAnimal(tigre);
-        Animal dauphine= new Animal("Delphinidae", "Dauphin", 12, true);
-        myZoo.addAnimal(dauphine);
-        int foundIndex = myZoo.searchAnimal(elephant);
-        int IdenticalIndex = myZoo.searchAnimal(tigre);
-        System.out.println("Search result : Index " + foundIndex);
-        System.out.println("Search result : Index " + IdenticalIndex);
-        myZoo.removeAnimal(dauphine);
-        System.out.println("Is my zoo full:"+myZoo.isZooFull());
-        myZoo.displayAnimalsInfo();
 
     }
 
