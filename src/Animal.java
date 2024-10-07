@@ -3,6 +3,7 @@ public class Animal {
    String name;
    int age;
    boolean isMammal;
+   boolean tree;
 
     public Animal(String familly, String name, int age, boolean isMammal) {
         this.family = familly;
