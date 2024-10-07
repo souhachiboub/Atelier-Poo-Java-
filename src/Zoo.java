@@ -1,9 +1,9 @@
 public class Zoo {
 
-    Animal [] animals;
-    String name;
-    String city;
-   final int nbrCages;
+    private Animal [] animals;
+    private String name;
+    private String city;
+   private final int nbrCages;
 
     public Zoo(String name, String city) {
         this.animals=new Animal[25];
@@ -18,10 +18,13 @@ public class Zoo {
     }
 
     public Boolean addAnimal(Animal animal) {
-
+        if (isZooFull()) {
+            System.out.println("The Zoo is full. Cannot add more animals.");
+            return false;
+        }
         for (Animal existingAnimal : animals) {
-            if (existingAnimal != null && existingAnimal.name.equals(animal.name)) {
-                System.out.println("Animal  " + animal.name + " is already exist in the Zoo.");
+            if (existingAnimal != null && existingAnimal.getName().equals(animal.getName())) {
+                System.out.println("Animal  " + animal.getName() + " is already exist in the Zoo.");
                 return false;
             }
         }
@@ -36,13 +39,13 @@ public class Zoo {
             index++;
         }
 
-        System.out.println("The Zoo is full.");
+
         return false;
     }
 
     public int searchAnimal(Animal animal) {
         for (int i = 0; i < animals.length; i++) {
-            if (animals[i] != null && animals[i].name.equals(animal.name)) {
+            if (animals[i] != null && animals[i].getName().equals(animal.getName())) {
                 return i;
             }
         }
@@ -53,10 +56,10 @@ public class Zoo {
         int index = searchAnimal(animal);
         if (index != -1) {
             animals[index] = null;
-            System.out.println("Animal " + animal.name + " removed from the Zoo.");
+            System.out.println("Animal " + animal.getName() + " removed from the Zoo.");
             return true;
         } else {
-            System.out.println("Animal " + animal.name + " not found in the Zoo.");
+            System.out.println("Animal " + animal.getName() + " not found in the Zoo.");
             return false;
         }
     }
@@ -86,12 +89,45 @@ public class Zoo {
         boolean vide = true;
         for (Animal animal : animals) {
             if (animal != null) {
-                System.out.println(animal.name);
+                System.out.println(animal.getName());
                 vide = false;
             }
         }
         if (vide) {
             System.out.println("No animals found in the Zoo.");
         }
+    }
+
+    public Animal[] getAnimals() {
+        return animals;
+    }
+
+    public void setAnimals(Animal[] animals) {
+        this.animals = animals;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        if (name == null || name.isEmpty()) {
+            System.out.println("Zoo name cannot be empty. Setting default name.");
+            this.name = "Unnamed Zoo";
+        } else {
+            this.name = name;
+        }
+    }
+
+    public String getCity() {
+        return city;
+    }
+
+    public void setCity(String city) {
+        this.city = city;
+    }
+
+    public int getNbrCages() {
+        return nbrCages;
     }
 }
