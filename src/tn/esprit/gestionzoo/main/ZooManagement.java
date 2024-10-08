@@ -1,3 +1,8 @@
+package tn.esprit.gestionzoo.main;
+
+import tn.esprit.gestionzoo.entities.Animal;
+import tn.esprit.gestionzoo.entities.Zoo;
+
 import java.util.Scanner;
 
 public class ZooManagement {
@@ -18,7 +23,7 @@ public class ZooManagement {
         zooname.close();
 
         Animal lion=new Animal("Lions","Simba",20,true);
-        Zoo myZoo=new Zoo("Singapore Zoo","Singapore");
+        Zoo myZoo=new Zoo("Singapore tn.esprit.gestionzoo.entities.Zoo","Singapore");
         myZoo.displayZoo();
         System.out.println(myZoo);
         System.out.println(myZoo.toString());
@@ -26,7 +31,7 @@ public class ZooManagement {
         System.out.println(lion);
         System.out.println(lion.toString());
         /*
-        toString() affiche cette résultat Zoo@7cd84586 cela signifie package.class avec le hashCode
+        toString() affiche cette résultat tn.esprit.gestionzoo.entities.Zoo@7cd84586 cela signifie package.class avec le hashCode
         le compilateur dans ce cas fait l'appel implicite de cette méthode
          */
         Animal tigre = new Animal("Felidae", "Tigre", 7, true);

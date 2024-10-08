@@ -1,3 +1,5 @@
+package tn.esprit.gestionzoo.entities;
+
 public class Zoo {
 
     private Animal [] animals;
@@ -14,17 +16,17 @@ public class Zoo {
     }
 
     public void displayZoo() {
-        System.out.println("Name of the Zoo: " + name + ", The City of the Zoo : " + city + ", Number  of cages : " + nbrCages);
+        System.out.println("Name of the tn.esprit.gestionzoo.entities.Zoo: " + name + ", The City of the tn.esprit.gestionzoo.entities.Zoo : " + city + ", Number  of cages : " + nbrCages);
     }
 
     public Boolean addAnimal(Animal animal) {
         if (isZooFull()) {
-            System.out.println("The Zoo is full. Cannot add more animals.");
+            System.out.println("The tn.esprit.gestionzoo.entities.Zoo is full. Cannot add more animals.");
             return false;
         }
         for (Animal existingAnimal : animals) {
             if (existingAnimal != null && existingAnimal.getName().equals(animal.getName())) {
-                System.out.println("Animal  " + animal.getName() + " is already exist in the Zoo.");
+                System.out.println("tn.esprit.gestionzoo.entities.Animal  " + animal.getName() + " is already exist in the tn.esprit.gestionzoo.entities.Zoo.");
                 return false;
             }
         }
@@ -56,10 +58,10 @@ public class Zoo {
         int index = searchAnimal(animal);
         if (index != -1) {
             animals[index] = null;
-            System.out.println("Animal " + animal.getName() + " removed from the Zoo.");
+            System.out.println("tn.esprit.gestionzoo.entities.Animal " + animal.getName() + " removed from the tn.esprit.gestionzoo.entities.Zoo.");
             return true;
         } else {
-            System.out.println("Animal " + animal.getName() + " not found in the Zoo.");
+            System.out.println("tn.esprit.gestionzoo.entities.Animal " + animal.getName() + " not found in the tn.esprit.gestionzoo.entities.Zoo.");
             return false;
         }
     }
@@ -85,7 +87,7 @@ public class Zoo {
         return z1Count >= z2Count ? z1 : z2;
     }
     public void displayAnimalsInfo() {
-        System.out.println("Animals in Zoo are :");
+        System.out.println("Animals in tn.esprit.gestionzoo.entities.Zoo are :");
         boolean vide = true;
         for (Animal animal : animals) {
             if (animal != null) {
@@ -94,7 +96,7 @@ public class Zoo {
             }
         }
         if (vide) {
-            System.out.println("No animals found in the Zoo.");
+            System.out.println("No animals found in the tn.esprit.gestionzoo.entities.Zoo.");
         }
     }
 
@@ -112,8 +114,8 @@ public class Zoo {
 
     public void setName(String name) {
         if (name == null || name.isEmpty()) {
-            System.out.println("Zoo name cannot be empty. Setting default name.");
-            this.name = "Unnamed Zoo";
+            System.out.println("tn.esprit.gestionzoo.entities.Zoo name cannot be empty. Setting default name.");
+            this.name = "Unnamed tn.esprit.gestionzoo.entities.Zoo";
         } else {
             this.name = name;
         }
