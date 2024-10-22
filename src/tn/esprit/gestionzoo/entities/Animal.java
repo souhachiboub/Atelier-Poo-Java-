@@ -7,11 +7,13 @@ public class Animal {
    private boolean isMammal;
 
     public Animal(String familly, String name, int age, boolean isMammal) {
+
         this.family = familly;
         this.name = name;
         this.age = age;
         this.isMammal = isMammal;
     }
+
 
     public String getFamily() {
         return family;
@@ -49,4 +51,16 @@ public class Animal {
     public void setMammal(boolean mammal) {
         isMammal = mammal;
     }
+
+    @Override
+    public String toString() {
+        return "Animal{" +
+                "family='" + family + '\'' +
+                ", name='" + name + '\'' +
+                ", age=" + age +
+                ", isMammal=" + isMammal +
+                '}';
+    }
+
+
 }

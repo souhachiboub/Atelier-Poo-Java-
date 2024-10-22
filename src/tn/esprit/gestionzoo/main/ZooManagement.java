@@ -1,8 +1,8 @@
 package tn.esprit.gestionzoo.main;
 
-import tn.esprit.gestionzoo.entities.Animal;
-import tn.esprit.gestionzoo.entities.Zoo;
+import tn.esprit.gestionzoo.entities.*;
 
+import javax.swing.plaf.synth.SynthTextAreaUI;
 import java.util.Scanner;
 
 public class ZooManagement {
@@ -48,7 +48,24 @@ public class ZooManagement {
         System.out.println("Is my zoo full:"+myZoo.isZooFull());
         myZoo.displayAnimalsInfo();
 
+        Dolphin dauphin = new Dolphin("Delphinidae", "Dauphin", 5, true, "Océan", 40.5f);
+
+        Penguin penguin = new Penguin("pengo", "penguino", 8, true, "Aractic", 30.0f);
+        Aquatic aquatic= new Aquatic("Delphinidae", "Dauphin", 5, true, "Océan");
+        System.out.println(dauphin.toString());
+        System.out.println(penguin.toString());
+        System.out.println(aquatic.toString());
+
+
+        dauphin.swim();
+        penguin.swim(); //la méthode swim de penguin est hérité de la classe mère Aquatic
+        aquatic.swim();
+
+
+
     }
+
+
 
 
 }
