@@ -51,15 +51,25 @@ public class ZooManagement {
         Dolphin dauphin = new Dolphin("Delphinidae", "Dauphin", 5, true, "Océan", 40.5f);
 
         Penguin penguin = new Penguin("pengo", "penguino", 8, true, "Aractic", 30.0f);
-        Aquatic aquatic= new Aquatic("Delphinidae", "Dauphin", 5, true, "Océan");
+
         System.out.println(dauphin.toString());
         System.out.println(penguin.toString());
-        System.out.println(aquatic.toString());
+
 
 
         dauphin.swim();
         penguin.swim(); //la méthode swim de penguin est hérité de la classe mère Aquatic
-        aquatic.swim();
+
+
+        /*-------------------------------------------------
+        Prosit 6
+        --------------------------------------------------- */
+        myZoo.addAquaticAnimal(dauphin);
+        myZoo.addAquaticAnimal(penguin);
+
+        dauphin.swim();
+        penguin.swim();   //la méthode swim de penguin est hérité de la classe mère Aquatics
+        System.out.print(dauphin.equals(penguin));
 
 
 
