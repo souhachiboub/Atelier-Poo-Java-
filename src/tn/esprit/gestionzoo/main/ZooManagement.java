@@ -1,16 +1,21 @@
 package tn.esprit.gestionzoo.main;
 
+
+import tn.esprit.gestionzoo.Exception.InvalidAgeException;
+import tn.esprit.gestionzoo.Exception.ZooFullException;
 import tn.esprit.gestionzoo.entities.*;
 
 import javax.swing.plaf.synth.SynthTextAreaUI;
+import java.awt.*;
 import java.util.Scanner;
 
 public class ZooManagement {
-    int nbrCages=20;
-    String zooName="my zoo";
+    int nbrCages = 20;
+    String zooName = "my zoo";
+
     public static void main(String[] args) {
         Scanner zooname = new Scanner(System.in);
-        ZooManagement zooManagement=new ZooManagement();
+        ZooManagement zooManagement = new ZooManagement();
         System.out.print("Entrez le nom du zoo : ");
         zooManagement.zooName = zooname.nextLine();
         System.out.println("Veuillez entrer un nombre de cages ");
@@ -19,11 +24,11 @@ public class ZooManagement {
             zooname.next();
         }
         zooManagement.nbrCages = zooname.nextInt();
-        System.out.println(zooManagement.zooName+" comporte "+zooManagement.nbrCages+" cages");
+        System.out.println(zooManagement.zooName + " comporte " + zooManagement.nbrCages + " cages");
         zooname.close();
 
-        Animal lion=new Animal("Lions","Simba",20,true);
-        Zoo myZoo=new Zoo("Singapore tn.esprit.gestionzoo.entities.Zoo","Singapore");
+        Animal lion = new Animal("Lions", "Simba", 20, true);
+        Zoo myZoo = new Zoo("Singapore tn.esprit.gestionzoo.entities.Zoo", "Singapore");
         myZoo.displayZoo();
         System.out.println(myZoo);
         System.out.println(myZoo.toString());
@@ -36,16 +41,27 @@ public class ZooManagement {
          */
         Animal tigre = new Animal("Felidae", "Tigre", 7, true);
         Animal elephant = new Animal("Elephantidae", "Éléphant", 15, true);
-        myZoo.addAnimal(lion);
-        myZoo.addAnimal(tigre);
-        Animal dauphine= new Animal("Delphinidae", "Dauphin", 12, true);
-        myZoo.addAnimal(dauphine);
+        Animal dauphine = new Animal("Delphinidae", "Dauphin", 12, true);
+        try {
+            myZoo.addAnimal(tigre);
+            myZoo.addAnimal(lion);
+
+
+
+
+            myZoo.addAnimal(dauphine);
+        } catch (ZooFullException e) {
+           System.err.println(e.getMessage());
+        }
+        catch (InvalidAgeException excep) {
+            System.err.println(excep.getMessage());
+        }
         int foundIndex = myZoo.searchAnimal(elephant);
         int IdenticalIndex = myZoo.searchAnimal(tigre);
         System.out.println("Search result : Index " + foundIndex);
         System.out.println("Search result : Index " + IdenticalIndex);
         myZoo.removeAnimal(dauphine);
-        System.out.println("Is my zoo full:"+myZoo.isZooFull());
+        System.out.println("Is my zoo full:" + myZoo.isZooFull());
         myZoo.displayAnimalsInfo();
 
         Dolphin dauphin = new Dolphin("Delphinidae", "Dauphin", 5, true, "Océan", 40.5f);
@@ -56,11 +72,8 @@ public class ZooManagement {
         System.out.println(penguin.toString());
 
 
-
         dauphin.swim();
         penguin.swim(); //la méthode swim de penguin est hérité de la classe mère Aquatic
-
-
         /*-------------------------------------------------
         Prosit 6
         --------------------------------------------------- */
@@ -69,13 +82,26 @@ public class ZooManagement {
 
         dauphin.swim();
         penguin.swim();   //la méthode swim de penguin est hérité de la classe mère Aquatics
-        System.out.print(dauphin.equals(penguin));
+        System.out.println(dauphin.equals(penguin));
 
-
-
+        /*--------------------------------------------------------
+        Prosit 7
+        -------------------------------------------------------- */
+        try{
+            myZoo.addAnimal(new Animal("Elephantidae", "Elephant", 10, true));
+        }catch (ZooFullException e){
+            System.err.println(e.getMessage());
+        }
+         catch (InvalidAgeException excep) {
+             System.err.println(excep.getMessage());
+         }
     }
 
 
 
 
+
+
+
 }
+

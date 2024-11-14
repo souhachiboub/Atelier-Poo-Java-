@@ -1,5 +1,8 @@
 package tn.esprit.gestionzoo.entities;
 
+import tn.esprit.gestionzoo.Exception.InvalidAgeException;
+import tn.esprit.gestionzoo.Exception.ZooFullException;
+
 public class Zoo {
 
     private Animal [] animals;
@@ -23,30 +26,30 @@ public class Zoo {
         System.out.println("Name of the tn.esprit.gestionzoo.entities.Zoo: " + name + ", The City of the tn.esprit.gestionzoo.entities.Zoo : " + city + ", Number  of cages : " + nbrCages);
     }
 
-    public Boolean addAnimal(Animal animal) {
+    public void addAnimal(Animal animal) throws ZooFullException,InvalidAgeException {
+
         if (isZooFull()) {
-            System.out.println("The tn.esprit.gestionzoo.entities.Zoo is full. Cannot add more animals.");
-            return false;
+            throw new ZooFullException("Ce Zoo est plein");
         }
+        if (animal.getAge() < 0) {
+            throw new InvalidAgeException("L'âge de l'animal ne peut pas être négatif: " + animal.getName());
+        }
+
         for (Animal existingAnimal : animals) {
             if (existingAnimal != null && existingAnimal.getName().equals(animal.getName())) {
-                System.out.println("tn.esprit.gestionzoo.entities.Animal  " + animal.getName() + " is already exist in the tn.esprit.gestionzoo.entities.Zoo.");
-                return false;
+                System.out.println("L'animal " + animal.getName() + " existe déjà dans le zoo.");
+                return;
             }
         }
 
 
-        int index = 0;
-        for (Animal existingAnimal : animals) {
-            if (existingAnimal == null) {
-                animals[index] = animal;
-                return true;
+        for (int i = 0; i < animals.length; i++) {
+            if (animals[i] == null) {
+                animals[i] = animal;
+                System.out.println("L'animal n° " +i+ " "+ animal.getName() + " a été ajouté au zoo.");
+                return;
             }
-            index++;
         }
-
-
-        return false;
     }
 
     public int searchAnimal(Animal animal) {
@@ -79,17 +82,7 @@ public class Zoo {
         return true;
     }
 
-    public static Zoo comparerZoo(Zoo z1, Zoo z2) {
-        int z1Count = 0, z2Count = 0;
-        for (Animal animal : z1.animals) {
-            if (animal != null) z1Count++;
-        }
-        for (Animal animal : z2.animals) {
-            if (animal != null) z2Count++;
-        }
 
-        return z1Count >= z2Count ? z1 : z2;
-    }
     public void displayAnimalsInfo() {
         System.out.println("Animals in tn.esprit.gestionzoo.entities.Zoo are :");
         boolean vide = true;
