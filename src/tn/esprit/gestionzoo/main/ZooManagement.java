@@ -95,6 +95,13 @@ public class ZooManagement {
          catch (InvalidAgeException excep) {
              System.err.println(excep.getMessage());
          }
+        /*----------------------------------------------------------
+        Prosit 8
+        ----------------------------------------------------------- */
+        Terrestrial bear = new Terrestrial("Mammal", "Bear", 7, true, 4);
+        penguin.eatMeat(Food.MEAT);
+        bear.eatPlantAndMeet(Food.BOTH);
+        dauphin.eatMeat(Food.MEAT);
     }
 
 
